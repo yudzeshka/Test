@@ -1,0 +1,201 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.wrapper {
+  color: #fff;
+  background-image: url(/img/background5.jpg);
+  background-size: cover;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  flex-direction: column;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    flex-basis: 8vh;
+    &:hover {
+      background-color: rgba($color: black, $alpha: 0.4);
+      transition: background-color 0.4s ease-out;
+    }
+    nav {
+      margin-left: 4rem;
+      li {
+        padding: 1rem;
+        cursor: pointer;
+        &:hover {
+          color: #cf0a2c;
+          transition: color 0.5s ease-out;
+        }
+      }
+    }
+
+    .active {
+      color: #cf0a2c;
+    }
+
+    .img {
+      padding: 1rem;
+      margin-right: 2rem;
+      background-image: url(/img/cart.png);
+      background-size: cover;
+      width: 25px;
+      height: 25px;
+      cursor: pointer;
+      &:hover {
+        border-bottom: 1px solid #cf0a2c;
+      }
+    }
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-basis: 92%;
+    text-align: center;
+    align-items: center;
+
+    h1 {
+      font-size: 80px;
+      font-weight: 700;
+      border-bottom: 1px solid white;
+      margin-top: 50px;
+    }
+    h3 {
+      font-size: 50px;
+      font-weight: 200;
+    }
+    button {
+      border: 1px solid white;
+      padding: 7px;
+      transition: all 0.2s ease-out;
+      &:hover {
+        background-color: rgba($color: #fff, $alpha: 0.2);
+        color: #cf0a2c;
+        transition: all 0.4s ease-out;
+      }
+    }
+  }
+}
+
+.menuPage {
+  background-image: url(img\brownBackground.jpg);
+  background-size: cover;
+  display: flex;
+  width: 100vw;
+  flex-direction: column;
+  background-color: rgb(218, 216, 216);
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    flex-basis: 8vh;
+    &:hover {
+      background-color: rgba($color: black, $alpha: 0.4);
+    }
+    nav {
+      margin-left: 4rem;
+      li {
+        padding: 1rem;
+        cursor: pointer;
+        &:hover {
+          color: #cf0a2c;
+        }
+      }
+    }
+
+    .active {
+      color: #cf0a2c;
+    }
+
+    .img {
+      padding: 1rem;
+      margin-right: 2rem;
+      background-image: url(/img/cart.png);
+      background-size: cover;
+      width: 25px;
+      height: 25px;
+      cursor: pointer;
+      &:hover {
+        border-bottom: 1px solid #cf0a2c;
+      }
+    }
+  }
+  // .contentWrapper {
+  //   display: flex;
+  //   justify-content: center;
+  //   width: 100%;
+  .carousel {
+    width: 66vw;
+    height: 550px;
+    text-align: center;
+    margin: auto;
+    padding-bottom: 20px;
+  }
+  .content {
+    background-color: lightgray;
+    margin: 0 17vw;
+
+    .promotions {
+      padding: 40px 0;
+      display: flex;
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+      .slider {
+        width: 40vw;
+        height: 40vh;
+        border: 1px solid black;
+        background-image: url(../public/img/slider/slide1.jpg);
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+      }
+    }
+  }
+  .cartItems {
+    display: grid;
+    gap: 1%;
+    grid-template-columns: repeat(3, 1fr);
+
+    .cart {
+      color: white;
+      background-image: url(img\brownBackground.jpg);
+      margin: 7%;
+      position: relative;
+      border-radius: 7px;
+
+      .dishImg {
+        width: 350px;
+        height: 220px;
+        border-radius: 7px;
+      }
+
+      // .description {
+      //   position: absolute;
+      //   visibility: visible;
+
+      //   top: 0;
+      //   left: 0;
+      //   width: 100%;
+      //   height: 100%;
+      //   &:hover {
+      //     // visibility: hidden;
+      //     background-color: rgba($color: black, $alpha: 0.1);
+      //   }
+      // }
+    }
+  }
+}
