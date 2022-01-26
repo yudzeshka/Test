@@ -3,14 +3,30 @@ import Header from "../Header";
 import Card from "../Card";
 import axios from "axios";
 
-export default function Cart() {
-  const API = "https://61de95d1fb8dae0017c2e11f.mockapi.io";
+async function getCartItems(api) {
+  return axios.get(`${api}/Cart`).then(({ data }) => data);
+}
 
+async function removeCartItems(api, id) {
+  await axios.delete(`${api}/Cart/${id}`);
+}
+
+export default function Cart({ API }) {
   const [cartItems, setCartItems] = React.useState([]);
-  React.useEffect(() => {
-    axios.get(`${API}/Cart`).then(({ data }) => setCartItems(data));
+  React.useEffect(async () => {
+    const cartItems = await getCartItems(API);
+    setCartItems(cartItems);
   }, []);
-  const totalPrice = cartItems.price;
+
+  const onRemove = async ({ id }) => {
+    await removeCartItems(API, id);
+    const cartItems = await getCartItems(API);
+    setCartItems(cartItems);
+  };
+  const isCart = true;
+  const totalPrice = cartItems.reduce((sum, obj) => obj.price + sum, 0);
+  // const totalPrice = cartItems.reduce(());
+
   return (
     <div className="menuPage h-screen overflow-auto">
       <Header />
@@ -25,12 +41,15 @@ export default function Cart() {
                 description={item.description}
                 dishName={item.dishName}
                 price={item.price}
+                id={item.id}
+                onRemove={(id) => onRemove(id)}
+                isCart={isCart}
               />
             ))}
           </div>
           <div className="flex justify-between px-5">
             <h1 className="text-center text-4xl font-thin ">
-              Total: ${totalPrice}{" "}
+              Total: ${totalPrice}
             </h1>
             <button className="text-center text-2xl border-double border-4 border-emerald-800 px-5">
               Checkout
